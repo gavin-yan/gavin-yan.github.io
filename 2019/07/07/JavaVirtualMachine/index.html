@@ -94,16 +94,16 @@
 <meta property="og:site_name" content="Gavin Yan">
 <meta property="og:description" content="一、自动内存管理机制1. 运行时数据区域Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为如下的数据区域： (1) 程序计数器（Program Counter Register）或者叫PC寄存器 每个线程都有独立的程序计数器，是线程私有的 如果线程正在执行的是Java方法，则该区域保存的是虚拟机正在执行的字节码指令的地址 如果线程正在执行的是Native方法，则该区域值为空（Unde">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://gavin-yan.github.io/2019/07/07/JavaVirtualMachine/images/HotSpot.png">
-<meta property="og:image" content="https://gavin-yan.github.io/2019/07/07/JavaVirtualMachine/images/ClassFile.png">
-<meta property="og:image" content="https://gavin-yan.github.io/2019/07/07/JavaVirtualMachine/images/ClassLifeCycle.png">
-<meta property="og:image" content="https://gavin-yan.github.io/2019/07/07/JavaVirtualMachine/images/ParentModel.png">
-<meta property="og:image" content="https://gavin-yan.github.io/2019/07/07/JavaVirtualMachine/images/MethodExecute.png">
-<meta property="og:updated_time" content="2019-08-03T06:01:55.137Z">
+<meta property="og:image" content="https://gavin-yan.github.io/images/HotSpot.png">
+<meta property="og:image" content="https://gavin-yan.github.io/images/ClassFile.png">
+<meta property="og:image" content="https://gavin-yan.github.io/images/ClassLifeCycle.png">
+<meta property="og:image" content="https://gavin-yan.github.io/images/ParentModel.png">
+<meta property="og:image" content="https://gavin-yan.github.io/images/MethodExecute.png">
+<meta property="og:updated_time" content="2019-08-03T06:14:05.008Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java虚拟机">
 <meta name="twitter:description" content="一、自动内存管理机制1. 运行时数据区域Java虚拟机在执行Java程序的过程中会把它所管理的内存划分为如下的数据区域： (1) 程序计数器（Program Counter Register）或者叫PC寄存器 每个线程都有独立的程序计数器，是线程私有的 如果线程正在执行的是Java方法，则该区域保存的是虚拟机正在执行的字节码指令的地址 如果线程正在执行的是Native方法，则该区域值为空（Unde">
-<meta name="twitter:image" content="https://gavin-yan.github.io/2019/07/07/JavaVirtualMachine/images/HotSpot.png">
+<meta name="twitter:image" content="https://gavin-yan.github.io/images/HotSpot.png">
 
 
 
@@ -648,7 +648,8 @@
 </ul>
 </li>
 </ul>
-<h4 id="2-HotSpot虚拟机垃圾收集器"><a href="#2-HotSpot虚拟机垃圾收集器" class="headerlink" title="(2) HotSpot虚拟机垃圾收集器"></a>(2) HotSpot虚拟机垃圾收集器</h4><p><img src="./images/HotSpot.png" alt="HotSpot"></p>
+<h4 id="2-HotSpot虚拟机垃圾收集器"><a href="#2-HotSpot虚拟机垃圾收集器" class="headerlink" title="(2) HotSpot虚拟机垃圾收集器"></a>(2) HotSpot虚拟机垃圾收集器</h4><!--![HotSpot](./images/HotSpot.png)-->
+<p><img src="/images/HotSpot.png" alt="HotSpot"></p>
 <ul>
 <li><p><strong>Serial收集器（新生代、单线程、复制算法）</strong></p>
 <ul>
@@ -827,7 +828,8 @@
 <p>Class文件格式采用一种类似于C语言结构体的伪结构来存储数据，这种伪结构只有两种数据类型：无符号数和表。</p>
 <ul>
 <li><strong>无符号数</strong>：属于基本的数据类型，以u1、u2、u4、u8来分别代表1个字节、2个字节、4个字节和8个字节的无符号数，无符号数可以用来描述数字、索引引用、数量值或者按照UTF-8编码构成字符串值</li>
-<li><strong>表</strong>：是由多个无符号数或者其他表作为数据项构成的复合数据类型，所有表都习惯性地以_info结尾，表用于描述有层次关系的复合结构的数据。<br><img src="./images/ClassFile.png" alt="表"><br>下面介绍具体的内容：<ul>
+<li><strong>表</strong>：是由多个无符号数或者其他表作为数据项构成的复合数据类型，所有表都习惯性地以_info结尾，表用于描述有层次关系的复合结构的数据。<!--![表](./images/ClassFile.png)-->
+<img src="/images/ClassFile.png" alt="表"><br>下面介绍具体的内容：<ul>
 <li><strong>魔数（magic）</strong>：每个Class文件的头4个字节，唯一作用是确定这个文件是否为一个能被虚拟机接受的Class文件。魔数的值固定为0xCAFEBABE，不会改变。</li>
 <li><strong>副版本号（minor_version）和主版本号（major_version）</strong>：紧接着魔数的4个字节，第5和第6个字节是副版本号，第7和第8个字节是主版本号。假设某个Class文件的主版本号为M，副版本号为m，那么这个Class文件的格式版本号为M.m。高版本的JDK能向下兼容以前版本的Class文件，但不能运行以后版本的Class。</li>
 <li><strong>常量池</strong>：紧接着主副版本号之后<ul>
@@ -891,8 +893,9 @@
 <li>使用（Using）</li>
 <li>卸载（Unloading）</li>
 </ul>
-<p>其中验证、准备、解析3个部分统称为连接（Linking）<br><img src="./images/ClassLifeCycle.png" alt="类的声明周期"></p>
-<p>加载、验证、准备、初始化和卸载的顺序是确定的，类的加载过程必须按照这种顺序按部就班地开始（不是进行或完成，因为这些阶段通常都是互相交叉地混合式进行的），解析阶段则不一定，因为它在某些情况下可以在初始化阶段之后再开始，这是为了支持Java语言的运行时绑定。</p>
+<p>其中验证、准备、解析3个部分统称为连接（Linking）</p>
+<!--![类的声明周期](./images/ClassLifeCycle.png)-->
+<p><img src="/images/ClassLifeCycle.png" alt="类的声明周期"><br>加载、验证、准备、初始化和卸载的顺序是确定的，类的加载过程必须按照这种顺序按部就班地开始（不是进行或完成，因为这些阶段通常都是互相交叉地混合式进行的），解析阶段则不一定，因为它在某些情况下可以在初始化阶段之后再开始，这是为了支持Java语言的运行时绑定。</p>
 <h4 id="3-类必须初始化的情况"><a href="#3-类必须初始化的情况" class="headerlink" title="(3) 类必须初始化的情况"></a>(3) 类必须初始化的情况</h4><ul>
 <li>遇到new、getstatic、putstatic或invokestatic这4条字节码指令时，<br>如果类没有进行过初始化，则需要先触发其初始化。生成这4条指令的最常见的Java代码场景是：<ul>
 <li>使用new关键字实例化对象的时候</li>
@@ -978,7 +981,8 @@
 </li>
 <li><strong>类加载器的层次关系模型——双亲委派模型</strong></li>
 </ul>
-<p><img src="./images/ParentModel.png" alt="双亲委派模型"></p>
+<!--![双亲委派模型](./images/ParentModel.png)-->
+<p><img src="/images/ParentModel.png" alt="双亲委派模型"></p>
 <ul>
 <li>要求：除了顶层的启动类加载器以外，其余的类加载器都应当有自己的父类加载器，这里加载器的父类关系一般不以继承的关系来实现，而是使用组合关系来复用父加载器的代码</li>
 <li>工作过程：如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把这个请求委派给父类加载器去完成，每一个层次的类加载器都是如此，因此所有的加载请求最终都应该传送到顶层的启动类加载器中，只有当父类的加载器反馈自己无法完成这个加载请求时（它的搜索范围中没有找到所需的类），子加载器才会尝试自己去加载</li>
@@ -1036,7 +1040,8 @@
 </li>
 <li><strong>解释执行</strong><ul>
 <li>图中间的那条分支就是解释执行的过程</li>
-<li>Java语言中，Javac编译器完成了程序源码经过词法分析、语法分析到抽象语法树，再遍历语法树生成线性的字节码指令流的过程，这一部分动作在Java虚拟机之外进行，而解释器在虚拟机的内部，因此Java程序的编译是半独立的。<br><img src="./images/MethodExecute.png" alt="方法执行"></li>
+<li>Java语言中，Javac编译器完成了程序源码经过词法分析、语法分析到抽象语法树，再遍历语法树生成线性的字节码指令流的过程，这一部分动作在Java虚拟机之外进行，而解释器在虚拟机的内部，因此Java程序的编译是半独立的。<!--![方法执行](./images/MethodExecute.png)-->
+<img src="/images/MethodExecute.png" alt="方法执行"></li>
 </ul>
 </li>
 <li><strong>基于栈的指令集和基于寄存器的指令集</strong><ul>
